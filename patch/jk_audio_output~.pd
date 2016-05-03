@@ -1,8 +1,4 @@
-#N canvas 579 227 960 570 10;
-#N canvas 0 22 450 300 (subpatch) 0;
-#X array \$0_signal 882 float 0;
-#X coords 0 1 882 -1 200 130 2 0 0;
-#X restore 240 116 graph;
+#N canvas 720 261 960 570 10;
 #X obj 162 119 vu 15 120 lbl2 empty -1 -8 0 10 -66577 -262144 1 0;
 #X obj 184 119 vu 15 120 lbl3 empty -1 -8 0 10 -66577 -1 1 0;
 #X obj 166 74 pvu~;
@@ -10,26 +6,30 @@
 #X obj 239 12 1;
 #X obj 117 35 *~;
 #X obj 239 35 metro 50;
-#X obj 239 74 tabwrite~ \$0_signal;
-#X obj 112 133 knob 32 32 0 1 0 0 volume lbl1 Volume -2 -10 0 10 -262144
--1 -262144 1700 1;
-#X obj 165 -20 r volume;
+#X obj 112 133 knob 32 32 0 1 0 0 \$0-volume lbl1 Volume -2 -10 0 10
+-262144 -1 -262144 3100 1;
 #X obj 114 201 tgl 32 0 unmute volume Unmute -2 -10 0 10 -262144 -1
--1 0.548387 0.548387;
-#X obj 165 4 tgl 15 0 empty unmute empty 17 7 0 10 -262144 -1 -1 0.548387
-0.548387;
+-1 1 1;
+#X obj 165 4 tgl 15 0 empty unmute empty 17 7 0 10 -262144 -1 -1 1
+1;
 #X obj 102 74 dac~;
 #X obj 117 2 inlet~;
-#X connect 3 0 1 0;
-#X connect 3 0 2 0;
-#X connect 4 0 5 0;
-#X connect 5 0 7 0;
-#X connect 6 0 3 0;
-#X connect 6 0 8 0;
-#X connect 6 0 13 0;
-#X connect 6 0 13 1;
-#X connect 7 0 8 0;
-#X connect 10 0 12 0;
-#X connect 12 0 6 1;
-#X connect 14 0 6 0;
+#X obj 165 -20 r \$0-volume;
+#N canvas 0 22 450 300 (subpatch) 0;
+#X array \$0_audio_output 882 float 0;
+#X coords 0 1 882 -1 200 130 1 0 0;
+#X restore 245 116 graph;
+#X obj 239 74 tabwrite~ \$0_audio_output;
+#X connect 2 0 0 0;
+#X connect 2 0 1 0;
+#X connect 3 0 4 0;
+#X connect 4 0 6 0;
+#X connect 5 0 2 0;
+#X connect 5 0 10 0;
+#X connect 5 0 10 1;
+#X connect 5 0 14 0;
+#X connect 6 0 14 0;
+#X connect 9 0 5 1;
+#X connect 11 0 5 0;
+#X connect 12 0 9 0;
 #X coords 0 -1 1 1 350 150 2 100 100;

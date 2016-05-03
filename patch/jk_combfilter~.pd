@@ -1,6 +1,6 @@
-#N canvas 360 288 805 492 12;
-#X obj 251 80 r~ delayFeedback;
-#N canvas 672 136 450 300 write_delay 0;
+#N canvas 206 71 714 685 12;
+#X obj 259 277 r~ delayFeedback;
+#N canvas 741 109 450 300 write_delay 0;
 #X obj 73 103 +~;
 #X obj 54 208 outlet~;
 #X obj 54 26 inlet~;
@@ -10,8 +10,8 @@
 #X connect 2 0 0 0;
 #X connect 2 0 1 0;
 #X connect 3 0 0 1;
-#X restore 113 128 pd write_delay;
-#X obj 273 296 s~ delayFeedback;
+#X restore 165 304 pd write_delay;
+#X obj 253 358 s~ delayFeedback;
 #N canvas 761 135 468 405 read_delay 0;
 #X obj 172 20 *~;
 #X obj 238 -22 / 100;
@@ -32,7 +32,7 @@
 #X connect 5 0 2 0;
 #X connect 8 0 0 0;
 #X connect 9 0 1 0;
-#X restore 113 254 pd read_delay;
+#X restore 166 331 pd read_delay;
 #N canvas 136 59 691 619 why_use_subpatches_here? 0;
 #X text 55 10 Execution order • Much of the time \, the actual execution
 order of pd audio rate objects need not concern us. • It is important
@@ -55,20 +55,73 @@ subpatches. The order in which subpatches are connected \, guarantees
 their order of execution. As long as the output of the delay line writer
 is attached to the input of the delay line reader \, then the delay
 line will always be written to before it is read.;
-#X restore -104 191 pd why_use_subpatches_here?;
+#X restore -37 203 pd why_use_subpatches_here?;
 #X text 77 -22 WARNING! Be careful when wearing headphones and working
 with live input. Keep the feedback value well under 98%;
-#X obj 113 80 inlet~;
-#X obj 113 410 outlet~;
-#X obj 233 153 cnv 15 144 94 empty cn_scnd Combfilter 10 12 0 14 -99865
+#X obj 166 399 outlet~;
+#X obj 195 153 cnv 15 226 94 empty cn_scnd Combfilter 57 12 0 14 -99865
 -241291 0;
-#X floatatom 242 227 5 0 98 2 Feedback(%) - -;
-#X floatatom 242 189 5 200 1000 2 Delay(samples) - -;
+#X obj 200 162 vu 15 80 empty empty -1 -8 0 10 -66577 -99865 1 0;
+#X obj 223 229 bng 15 250 50 0 \$0-reset empty Reset 20 8 0 12 -258113
+-4034 -4034;
+#X obj 226 203 hsl 128 15 0 98 0 0 empty cmbf_feedback feedback(%)
+35 8 0 10 -204800 -1 -1 0 1;
+#X obj 226 184 hsl 128 15 0 1000 0 0 empty cmbf_delay delay(samples)
+25 8 0 10 -261682 -1 -1 0 1;
+#X obj 119 87 spigot~;
+#X obj 199 125 pvu~;
+#X obj 293 229 tgl 15 0 \$0-active empty Active 20 8 0 12 -262144 -1
+-4034 0 1;
+#X obj 165 53 r \$0-active;
+#X obj 65 136 s~ \$0-bypass;
+#X obj 363 184 nbx 5 14 0 1000 0 0 transpose_ui empty empty 0 -8 0
+10 -262144 -1 -1 0 256;
+#X obj 363 203 nbx 5 14 0 98 0 0 window_ui empty empty 0 -8 0 10 -262144
+-1 -1 0 256;
+#X text -43 607 docs based on the MAX/MSP reference (c) cycling'74
+;
+#X text -44 621 ___________________________________________________
+;
+#X floatatom 117 481 5 0 0 0 - - -;
+#X floatatom 159 494 5 0 0 0 - - -;
+#X floatatom 201 517 5 0 0 0 - - -;
+#X floatatom 244 543 5 0 0 0 - - -;
+#X msg -42 532 clear;
+#X text -79 510 clear buffer;
+#X msg -5 470 10 0.4 0.7;
+#X text 165 470 D = delay time;
+#X text 203 494 a = input (pre delay) amplitude coefficient;
+#X text 249 518 b = input (post delay) amplitude coefficient;
+#X text 289 544 c = outnput amplitude coefficient;
+#X text 0 451 D a b;
+#X text 146 444 D \, a \, b \, c inlets support signals aswell;
+#X obj 74 568 comb~ 100 0.2 0.2 0.3 0.9;
+#X obj 119 24 inlet~;
+#X obj 460 198 loadbang;
+#X msg 460 249 \; cmbf_delay 0 \; cmbf_feedback 0;
+#X obj 69 358 r~ \$0-bypass;
+#X obj 472 223 r \$0-reset;
 #X connect 0 0 1 1;
 #X connect 1 0 3 0;
-#X connect 3 0 7 0;
+#X connect 3 0 6 0;
 #X connect 3 1 2 0;
-#X connect 6 0 1 0;
-#X connect 9 0 3 2;
-#X connect 10 0 3 1;
-#X coords 0 -1 1 1 150 100 1 230 150;
+#X connect 10 0 18 0;
+#X connect 11 0 17 0;
+#X connect 12 0 16 0;
+#X connect 12 1 13 0;
+#X connect 12 1 1 0;
+#X connect 13 0 8 0;
+#X connect 15 0 12 1;
+#X connect 17 0 3 1;
+#X connect 18 0 3 2;
+#X connect 21 0 34 1;
+#X connect 22 0 34 2;
+#X connect 23 0 34 3;
+#X connect 24 0 34 4;
+#X connect 25 0 34 0;
+#X connect 27 0 34 0;
+#X connect 35 0 12 0;
+#X connect 36 0 37 0;
+#X connect 38 0 6 0;
+#X connect 39 0 37 0;
+#X coords 0 -1 1 1 232 100 1 192 150;

@@ -1,24 +1,24 @@
-#N canvas 989 278 803 560 10;
-#X obj -105 -159 cnv 15 800 550 empty cn_main empty 0 0 0 14 -233017
+#N canvas 644 151 653 560 10;
+#X obj -105 -159 cnv 15 650 550 empty cn_main empty 0 0 0 14 -233017
 -262144 0;
-#X obj -83 -83 jk_pitch_shifter~;
-#X obj -83 -139 pddplink _jk_main-help.pd -text README: First Help
+#X obj -85 -86 jk_pitch_shifter~;
+#X obj -85 -142 pddplink _jk_main-help.pd -text README: First Help
 ;
-#X obj 333 -112 jk_audio_input~;
-#X obj 203 -112 jk_theme;
-#X obj 202 -20 jk_3d_viewport;
+#X obj 173 -115 jk_audio_input~;
+#X obj 274 86 jk_theme;
+#X obj 174 86 jk_3d_viewport;
 #N canvas 710 587 548 297 logo 0;
 #X obj 75 75 image logo150px.gif;
 #X coords 0 297 1 296 150 150 2 0 0;
-#X restore 533 58 pd logo;
-#X obj 333 228 jk_audio_output~;
-#X obj -82 29 jk_ssb_modulation~;
-#X obj -82 140 jk_combfilter~;
-#X obj -82 251 jk_reverb~;
-#X obj -82 -112 r~ audio_in;
-#X obj -82 361 s~ audio_out;
-#X obj 333 50 s~ audio_in;
-#X obj 334 193 r~ audio_out;
+#X restore 373 55 pd logo;
+#X obj 173 225 jk_audio_output~;
+#X obj -84 26 jk_ssb_modulation~;
+#X obj -84 137 jk_combfilter~;
+#X obj -84 248 jk_reverb~;
+#X obj -84 -115 r~ audio_in;
+#X obj -84 358 s~ audio_out;
+#X obj 173 47 s~ audio_in;
+#X obj 174 190 r~ audio_out;
 #X connect 1 0 8 0;
 #X connect 3 0 13 0;
 #X connect 8 0 9 0;

@@ -1,7 +1,7 @@
-#N canvas 439 222 554 618 10;
+#N canvas 678 334 554 618 10;
 #X obj -12 570 cnv 15 552 21 empty \$0-pddp.cnv.footer empty 20 12
 0 14 -228856 -66577 0;
-#X obj -12 -25 cnv 15 552 40 empty \$0-pddp.cnv.header jk_ssb_modulation~
+#X obj -12 -25 cnv 15 552 40 empty \$0-pddp.cnv.header jk_combfilter~
 3 12 0 18 -66577 -4034 0;
 #X obj -12 299 cnv 3 550 3 empty \$0-pddp.cnv.inlets inlets 8 12 0
 13 -228856 -1 0;
