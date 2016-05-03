@@ -1,0 +1,8 @@
+#N canvas 298 352 450 300 10;
+#X obj 53 53 cnv 15 344 144 empty cn_scnd Audio-Input 7 10 0 12 -99865
+-241291 0;
+#X obj 55 217 adc~;
+#X obj 56 271 outlet~;
+#X connect 1 0 2 0;
+#X connect 1 1 2 0;
+#X coords 0 -1 1 1 350 150 1 50 50;

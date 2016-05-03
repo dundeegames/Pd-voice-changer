@@ -1,0 +1,157 @@
+#N canvas 334 187 1169 554 12;
+#X floatatom 19 87 0 0 0 0 - - -;
+#X obj 82 358 *~;
+#X obj 205 295 line~;
+#X floatatom 237 112 0 0 0 0 - - -;
+#X text 68 9 PITCH SHIFTER;
+#X obj 205 269 pack 0 200;
+#X obj 19 143 exp;
+#X floatatom 19 169 6 0 0 0 - - -;
+#X obj 19 259 /;
+#X obj 146 189 * 0.001;
+#X obj 314 365 line~;
+#X obj 314 340 pack 0 200;
+#X floatatom 314 289 0 0 0 0 - - -;
+#X obj 82 384 +~;
+#X obj 19 410 cos~;
+#X obj 19 437 *~;
+#X obj 169 485 +~;
+#X obj 106 317 wrap~;
+#X obj 251 360 *~;
+#X obj 251 393 +~;
+#X obj 188 420 cos~;
+#X obj 188 447 *~;
+#X msg 506 342 \; transpose 0 \; window 100 \; delay 0;
+#X obj 531 308 loadbang;
+#X obj 146 216 t b f;
+#X floatatom 19 285 6 0 0 0 - - -;
+#X obj 106 290 +~ 0.5;
+#X obj 19 358 -~ 0.5;
+#X obj 19 384 *~ 0.5;
+#X obj 188 359 -~ 0.5;
+#X obj 188 392 *~ 0.5;
+#X obj 19 196 - 1;
+#X obj 19 117 * 0.05776;
+#X obj 19 222 * -1;
+#X text 84 85 <-- transposition;
+#X text 127 98 (halftones);
+#X text 82 163 speed;
+#X text 81 177 change;
+#X text 296 112 <--window (msec);
+#X text 54 252 tape head;
+#X text 729 150 This is a classic rotating-tape-head style pitch shifter
+using the vd~ variable delay object. Ther are two moving tape heads
+\, each of which is loudest at the middle of its trajectory \, and
+enveloped out at the moment it has to jump back (or forward) to start
+another scratch. Most of the brain work is in computing how fast the
+tape heads have to move to get the desired transposition.;
+#X text 727 260 The "window size" is the total trajectory of the read
+points in the delay line \, in milliseconds. The delay times are controlled
+by a phasor~ object. The second delay time \, 180 degrees out of phase
+from the first one \, is computed using the "wrap" object.;
+#X text 725 350 The "window size" is the total trajectory of the read
+points in the delay line \, in milliseconds. The delay times are controlled
+by a phasor~ object. The second delay time \, 180 degrees out of phase
+from the first one \, is computed using the "wrap" object.;
+#X text 724 442 The cos~ objects compute the fadein and fadeout of
+the two delay line outputs. They each traverse the positive half of
+the cosine waveform (phase -0.25 to +0.25) over the time the phase
+goes from one end to the other.;
+#X obj 19 316 phasor~;
+#X text 689 534 updated for Pd version 0.37-1;
+#X obj 314 316 max 1.5;
+#X text 317 222 delay;
+#X text 314 240 (msec);
+#X obj 237 139 max 1;
+#X text 55 265 rotation freq;
+#X obj 82 410 vd~ G09-del;
+#X obj 251 422 vd~ G09-del;
+#X obj 528 165 delwrite~ G09-del 5000;
+#X obj 438 28 inlet~;
+#X obj 169 523 outlet~;
+#X obj 314 263 r delay_ui;
+#X obj 237 86 r window_ui;
+#X obj 19 61 r transpose_ui;
+#X obj 453 203 cnv 15 226 94 empty cn_scnd Pitch_Shifter 57 12 0 14
+-99865 -241291 0;
+#X obj 458 212 vu 15 80 empty empty -1 -8 0 10 -66577 -99865 1 0;
+#X obj 481 279 bng 15 250 50 0 empty empty Reset 20 8 0 12 -258113
+-4034 -4034;
+#X obj 484 260 hsl 128 15 0 1000 0 0 empty delay delay 50 8 0 10 -260097
+-1 -1 0 1;
+#X obj 484 241 hsl 128 15 0 1000 0 0 empty window window 47 8 0 10
+-4032 -1 -1 1270 1;
+#X obj 484 222 hsl 128 15 -20 20 0 0 empty transpose transpose 38 8
+0 10 -4034 -1 -1 6350 1;
+#X obj 438 115 spigot~;
+#X obj 485 165 pvu~;
+#X obj 551 279 tgl 15 0 \$0-active empty Active 20 8 0 12 -262144 -1
+-4034 0 1;
+#X obj 484 81 r \$0-active;
+#X obj 204 485 r~ \$0-bypass;
+#X obj 384 164 s~ \$0-bypass;
+#X obj 621 222 nbx 5 14 -20 20 0 0 transpose_ui empty empty 0 -8 0
+10 -262144 -1 -1 0 256;
+#X obj 621 241 nbx 5 14 0 1000 0 0 window_ui empty empty 0 -8 0 10
+-262144 -1 -1 0 256;
+#X obj 621 260 nbx 5 14 0 1000 0 0 delay_ui empty empty 0 -8 0 10 -262144
+-1 -1 0 256;
+#X connect 0 0 32 0;
+#X connect 1 0 13 0;
+#X connect 2 0 1 1;
+#X connect 2 0 18 1;
+#X connect 3 0 49 0;
+#X connect 5 0 2 0;
+#X connect 6 0 7 0;
+#X connect 7 0 31 0;
+#X connect 8 0 25 0;
+#X connect 9 0 24 0;
+#X connect 10 0 13 1;
+#X connect 10 0 19 1;
+#X connect 11 0 10 0;
+#X connect 12 0 46 0;
+#X connect 13 0 51 0;
+#X connect 14 0 15 0;
+#X connect 15 0 16 0;
+#X connect 16 0 55 0;
+#X connect 17 0 18 0;
+#X connect 17 0 29 0;
+#X connect 18 0 19 0;
+#X connect 19 0 52 0;
+#X connect 20 0 21 0;
+#X connect 21 0 16 1;
+#X connect 23 0 22 0;
+#X connect 24 0 8 0;
+#X connect 24 1 8 1;
+#X connect 25 0 44 0;
+#X connect 26 0 17 0;
+#X connect 27 0 28 0;
+#X connect 28 0 14 0;
+#X connect 29 0 30 0;
+#X connect 30 0 20 0;
+#X connect 31 0 33 0;
+#X connect 32 0 6 0;
+#X connect 33 0 8 0;
+#X connect 44 0 1 0;
+#X connect 44 0 27 0;
+#X connect 44 0 26 0;
+#X connect 46 0 11 0;
+#X connect 49 0 9 0;
+#X connect 49 0 5 0;
+#X connect 51 0 15 1;
+#X connect 52 0 21 1;
+#X connect 54 0 65 0;
+#X connect 56 0 12 0;
+#X connect 57 0 3 0;
+#X connect 58 0 0 0;
+#X connect 61 0 22 0;
+#X connect 62 0 73 0;
+#X connect 63 0 72 0;
+#X connect 64 0 71 0;
+#X connect 65 0 70 0;
+#X connect 65 1 53 0;
+#X connect 65 1 66 0;
+#X connect 66 0 60 0;
+#X connect 68 0 65 1;
+#X connect 69 0 55 0;
+#X coords 0 -1 1 1 232 100 2 450 200;

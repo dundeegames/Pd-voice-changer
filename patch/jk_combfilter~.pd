@@ -1,0 +1,74 @@
+#N canvas 360 288 805 492 12;
+#X obj 251 80 r~ delayFeedback;
+#N canvas 672 136 450 300 write_delay 0;
+#X obj 73 103 +~;
+#X obj 54 208 outlet~;
+#X obj 54 26 inlet~;
+#X obj 162 24 inlet~;
+#X obj 73 147 delwrite~ combfilter 10000;
+#X connect 0 0 4 0;
+#X connect 2 0 0 0;
+#X connect 2 0 1 0;
+#X connect 3 0 0 1;
+#X restore 113 128 pd write_delay;
+#X obj 273 296 s~ delayFeedback;
+#N canvas 761 135 468 405 read_delay 0;
+#X obj 172 20 *~;
+#X obj 238 -22 / 100;
+#X obj 172 -148 / 44.1;
+#X obj 142 72 +~;
+#X obj -43 -173 inlet~;
+#X obj 172 -182 inlet;
+#X obj 142 151 outlet~;
+#X obj 208 87 outlet~;
+#X obj 172 -115 delread~ combfilter;
+#X obj 238 -59 inlet;
+#X connect 0 0 3 1;
+#X connect 0 0 7 0;
+#X connect 1 0 0 1;
+#X connect 2 0 8 0;
+#X connect 3 0 6 0;
+#X connect 4 0 3 0;
+#X connect 5 0 2 0;
+#X connect 8 0 0 0;
+#X connect 9 0 1 0;
+#X restore 113 254 pd read_delay;
+#N canvas 136 59 691 619 why_use_subpatches_here? 0;
+#X text 55 10 Execution order • Much of the time \, the actual execution
+order of pd audio rate objects need not concern us. • It is important
+to remember that audio processing is done in blocks: these are audio
+vectors (buffers): the default block size is 64 samples. Ordinarily
+\, objects do not process audio on a sample by sample basis. pd ensures
+that the order of execution is such \, that an audio rate objects’s
+output block is not calculated \, until all the inputs for the same
+block have been computed first. • However \, when working with delays
+\, order does become important \, as we are relying on the past values
+of samples. • It is important to write to the delay line before it
+is read. • If the delay line is read before it is written to \, the
+minimum delay it is possible to have is one audio block (e.g. 64 samples
+or ca. 1.45 msecs at 44.1kHz sampling rate). This is \, of course \,
+not a problem for long delays \, but for designing patches that use
+shorter delays \, such as flangers and comb filters \, this becomes
+a problematic limit. • One useful method of ensuring the correct
+execution order is to put delay writers and delay readers in separate
+subpatches. The order in which subpatches are connected \, guarantees
+their order of execution. As long as the output of the delay line writer
+is attached to the input of the delay line reader \, then the delay
+line will always be written to before it is read.;
+#X restore -104 191 pd why_use_subpatches_here?;
+#X text 77 -22 WARNING! Be careful when wearing headphones and working
+with live input. Keep the feedback value well under 98%;
+#X obj 113 80 inlet~;
+#X obj 113 410 outlet~;
+#X obj 233 153 cnv 15 144 94 empty cn_scnd Combfilter 10 12 0 14 -99865
+-241291 0;
+#X floatatom 242 227 5 0 98 2 Feedback(%) - -;
+#X floatatom 242 189 5 200 1000 2 Delay(samples) - -;
+#X connect 0 0 1 1;
+#X connect 1 0 3 0;
+#X connect 3 0 7 0;
+#X connect 3 1 2 0;
+#X connect 6 0 1 0;
+#X connect 9 0 3 2;
+#X connect 10 0 3 1;
+#X coords 0 -1 1 1 150 100 1 230 150;

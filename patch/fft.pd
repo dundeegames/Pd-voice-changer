@@ -1,0 +1,64 @@
+#N canvas 111 195 1169 696 12;
+#X obj 29 71 inlet~;
+#X obj 105 224 inlet;
+#X obj 39 102 rfft~;
+#X obj 39 135 *~;
+#X obj 70 135 *~;
+#X obj 39 165 sqrt~;
+#X obj 342 119 block~ 4096 1;
+#X obj 39 191 biquad~ 0 0 0 0 1;
+#X text 103 103 Fourier series;
+#X text 108 156 magnitude;
+#X text 106 141 calculate;
+#X text 31 13 This subpatch computes the spectrum of the incoming signal
+with a (rectangular windowed) FFT. FFTs aren't properly introduced
+until much later.;
+#X text 93 71 signal to analyze;
+#X text 202 176 delay two samples;
+#X text 201 192 for better graphing;
+#X obj 26 435 samplerate~;
+#X obj 26 412 bng 18 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X floatatom 26 482 5 0 0 0 - - -;
+#X obj 26 458 / 256;
+#X obj 26 388 loadbang;
+#X floatatom 26 551 5 0 0 0 - - -;
+#X obj 34 504 s fundamental;
+#X obj 26 527 ftom;
+#X text 24 329 At load time \, calculate a good choice of fundamental
+frequency for showing spectra: the 16th bin in a 4096-point spectrum
+\, so SR*16/4096 or SR/256.;
+#X text 155 226 "bang" into this inlet to graph it;
+#X floatatom 201 490 5 0 0 0 - - -;
+#X obj 201 466 / 4096;
+#X text 197 435 One bin is SR/4096:;
+#X text 82 550 <-just out of curiosity \, here's the fundamental pitch
+;
+#X obj 201 512 s freq-step;
+#X obj 105 258 tabwrite~ E02-spectrum;
+#X obj 30 291 tabwrite~ F05-signal;
+#X text 25 584 pd fft from: Theory and Techniques of Electronic Music
+Outputs spectrum and signal information at a rate determined by a rate
+set by metro;
+#X connect 0 0 2 0;
+#X connect 0 0 31 0;
+#X connect 1 0 30 0;
+#X connect 1 0 31 0;
+#X connect 2 0 3 0;
+#X connect 2 0 3 1;
+#X connect 2 1 4 0;
+#X connect 2 1 4 1;
+#X connect 3 0 5 0;
+#X connect 4 0 5 0;
+#X connect 5 0 7 0;
+#X connect 7 0 30 0;
+#X connect 15 0 18 0;
+#X connect 15 0 26 0;
+#X connect 16 0 15 0;
+#X connect 17 0 21 0;
+#X connect 17 0 22 0;
+#X connect 18 0 17 0;
+#X connect 19 0 16 0;
+#X connect 22 0 20 0;
+#X connect 25 0 29 0;
+#X connect 26 0 25 0;

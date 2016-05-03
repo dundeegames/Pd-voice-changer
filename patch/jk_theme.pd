@@ -1,0 +1,19 @@
+#N canvas 445 283 450 300 10;
+#X obj 101 51 cnv 15 88 78 empty cn_scnd Theme 7 10 0 12 -33289 -24198
+0;
+#X obj 108 70 bng 15 250 50 0 empty lbl1 White 20 7 0 10 -262144 -1
+-262144;
+#X obj 108 90 bng 15 250 50 0 empty lbl1 Gray 20 7 0 10 -262144 -1
+-262144;
+#X obj 108 110 bng 15 250 50 0 empty lbl1 Dark 20 7 0 10 -262144 -1
+-262144;
+#X msg 226 167 \; cn_main color 20 \; cn_scnd color 12 16 \; lbl1 color
+() 0;
+#X msg 225 104 \; cn_main color 10 \; cn_scnd color 21 15 \; lbl1 color
+() 15;
+#X msg 225 39 \; cn_main color 0 \; cn_scnd color 0 22 \; lbl1 color
+() 22;
+#X connect 1 0 6 0;
+#X connect 2 0 5 0;
+#X connect 3 0 4 0;
+#X coords 0 -1 1 1 90 80 2 100 50;
