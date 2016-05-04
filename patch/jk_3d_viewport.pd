@@ -2,12 +2,12 @@
 #X obj 157 273 gemwin;
 #X obj 100 50 cnv 15 90 80 empty cn_scnd 3D-Wiewport 7 10 0 12 -99865
 -241291 0;
-#X obj 107 70 tgl 15 0 render lbl1 Render 20 7 0 10 -262144 -1 -241291
+#X obj 107 110 tgl 15 0 render lbl1 Render 20 7 0 10 -262144 -1 -241291
 0 1;
-#X obj 107 89 bng 15 250 50 0 open empty Start 20 7 0 10 -4034 -1 -4034
+#X obj 107 70 bng 15 250 50 0 open empty Open 20 7 0 10 -4034 -1 -4034
 ;
-#X obj 107 108 bng 15 250 50 0 close empty Close 20 7 0 10 -258113
--1 -258113;
+#X obj 107 90 bng 15 250 50 0 close empty Close 20 7 0 10 -258113 -1
+-258113;
 #X msg 157 209 destroy;
 #X obj 254 184 r open;
 #X obj 72 209 r render;
