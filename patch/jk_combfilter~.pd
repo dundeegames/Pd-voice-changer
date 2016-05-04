@@ -1,4 +1,4 @@
-#N canvas 206 71 714 685 12;
+#N canvas 206 71 777 729 12;
 #X obj 259 277 r~ delayFeedback;
 #N canvas 741 109 450 300 write_delay 0;
 #X obj 73 103 +~;
@@ -65,63 +65,71 @@ with live input. Keep the feedback value well under 98%;
 #X obj 223 229 bng 15 250 50 0 \$0-reset empty Reset 20 8 0 12 -258113
 -4034 -4034;
 #X obj 226 203 hsl 128 15 0 98 0 0 empty cmbf_feedback feedback(%)
-35 8 0 10 -204800 -1 -1 0 1;
+35 8 0 10 -204800 -1 -1 8700 1;
 #X obj 226 184 hsl 128 15 0 1000 0 0 empty cmbf_delay delay(samples)
-25 8 0 10 -261682 -1 -1 0 1;
+25 8 0 10 -261682 -1 -1 12200 1;
 #X obj 119 87 spigot~;
 #X obj 199 125 pvu~;
-#X obj 293 229 tgl 15 0 \$0-active empty Active 20 8 0 12 -262144 -1
--4034 0 1;
-#X obj 165 53 r \$0-active;
+#X obj 293 229 tgl 15 0 \$0-activate empty Active 20 8 0 12 -262144
+-1 -4034 1 1;
 #X obj 65 136 s~ \$0-bypass;
 #X obj 363 184 nbx 5 14 0 1000 0 0 transpose_ui empty empty 0 -8 0
-10 -262144 -1 -1 0 256;
+10 -262144 -1 -1 960.63 256;
 #X obj 363 203 nbx 5 14 0 98 0 0 window_ui empty empty 0 -8 0 10 -262144
--1 -1 0 256;
-#X text -43 607 docs based on the MAX/MSP reference (c) cycling'74
-;
-#X text -44 621 ___________________________________________________
-;
-#X floatatom 117 481 5 0 0 0 - - -;
-#X floatatom 159 494 5 0 0 0 - - -;
-#X floatatom 201 517 5 0 0 0 - - -;
-#X floatatom 244 543 5 0 0 0 - - -;
-#X msg -42 532 clear;
-#X text -79 510 clear buffer;
-#X msg -5 470 10 0.4 0.7;
-#X text 165 470 D = delay time;
-#X text 203 494 a = input (pre delay) amplitude coefficient;
-#X text 249 518 b = input (post delay) amplitude coefficient;
-#X text 289 544 c = outnput amplitude coefficient;
-#X text 0 451 D a b;
-#X text 146 444 D \, a \, b \, c inlets support signals aswell;
-#X obj 74 568 comb~ 100 0.2 0.2 0.3 0.9;
+-1 -1 67.1339 256;
 #X obj 119 24 inlet~;
 #X obj 460 198 loadbang;
 #X msg 460 249 \; cmbf_delay 0 \; cmbf_feedback 0;
 #X obj 69 358 r~ \$0-bypass;
 #X obj 472 223 r \$0-reset;
+#X text 287 34 Switch off Activate toggle in order to bypass the effect
+and save CPU cycles.;
+#X text 287 78 Reset will restore the effect to its defaupt values.
+;
+#X text 287 110 Based on lab example;
+#X obj -60 458 cnv 15 720 250 empty empty empty 20 12 0 14 -233017
+-66577 0;
+#X text 19 661 docs based on the MAX/MSP reference (c) cycling'74;
+#X text 18 675 ___________________________________________________
+;
+#X floatatom 179 535 5 0 0 0 - - -;
+#X floatatom 221 548 5 0 0 0 - - -;
+#X floatatom 263 571 5 0 0 0 - - -;
+#X floatatom 306 597 5 0 0 0 - - -;
+#X msg 20 586 clear;
+#X text -17 564 clear buffer;
+#X msg 57 524 10 0.4 0.7;
+#X text 227 524 D = delay time;
+#X text 265 548 a = input (pre delay) amplitude coefficient;
+#X text 311 572 b = input (post delay) amplitude coefficient;
+#X text 351 598 c = outnput amplitude coefficient;
+#X text 62 505 D a b;
+#X text 208 498 D \, a \, b \, c inlets support signals aswell;
+#X obj 136 622 comb~ 100 0.2 0.2 0.3 0.9;
+#X text 100 456 this part was not used. Tried to experiment with comb~
+object \, but it produced undesirable effect.;
+#X obj 165 53 r \$0-activate;
 #X connect 0 0 1 1;
 #X connect 1 0 3 0;
 #X connect 3 0 6 0;
 #X connect 3 1 2 0;
-#X connect 10 0 18 0;
-#X connect 11 0 17 0;
-#X connect 12 0 16 0;
+#X connect 10 0 17 0;
+#X connect 11 0 16 0;
+#X connect 12 0 15 0;
 #X connect 12 1 13 0;
 #X connect 12 1 1 0;
 #X connect 13 0 8 0;
-#X connect 15 0 12 1;
-#X connect 17 0 3 1;
-#X connect 18 0 3 2;
-#X connect 21 0 34 1;
-#X connect 22 0 34 2;
-#X connect 23 0 34 3;
-#X connect 24 0 34 4;
-#X connect 25 0 34 0;
-#X connect 27 0 34 0;
-#X connect 35 0 12 0;
-#X connect 36 0 37 0;
-#X connect 38 0 6 0;
-#X connect 39 0 37 0;
+#X connect 16 0 3 1;
+#X connect 17 0 3 2;
+#X connect 18 0 12 0;
+#X connect 19 0 20 0;
+#X connect 21 0 6 0;
+#X connect 22 0 20 0;
+#X connect 29 0 42 1;
+#X connect 30 0 42 2;
+#X connect 31 0 42 3;
+#X connect 32 0 42 4;
+#X connect 33 0 42 0;
+#X connect 35 0 42 0;
+#X connect 44 0 12 1;
 #X coords 0 -1 1 1 232 100 1 192 150;

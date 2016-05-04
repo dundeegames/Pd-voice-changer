@@ -93,9 +93,14 @@ goes from one end to the other.;
 #X obj 621 222 nbx 5 14 -20 20 0 0 transpose_ui empty empty 0 -8 0
 10 -262144 -1 -1 0 256;
 #X obj 621 241 nbx 5 14 0 1000 0 0 window_ui empty empty 0 -8 0 10
--262144 -1 -1 0 256;
+-262144 -1 -1 100 256;
 #X obj 621 260 nbx 5 14 0 1000 0 0 delay_ui empty empty 0 -8 0 10 -262144
 -1 -1 0 256;
+#X text 612 21 Switch off Activate toggle in order to bypass the effect
+and save CPU cycles.;
+#X text 612 66 Reset will restore the effect to its defaupt values.
+;
+#X text 612 95 based on Pd example: G09.pitchshift;
 #X connect 0 0 32 0;
 #X connect 1 0 13 0;
 #X connect 2 0 1 1;

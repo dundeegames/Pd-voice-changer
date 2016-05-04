@@ -1,4 +1,4 @@
-#N canvas 922 276 623 341 10;
+#N canvas 395 296 623 341 10;
 #X obj 157 273 gemwin;
 #X obj 100 50 cnv 15 90 80 empty cn_scnd 3D-Wiewport 7 10 0 12 -99865
 -241291 0;
@@ -14,6 +14,10 @@
 #X obj 157 184 r close;
 #X msg 254 209 title Jiri's-Voice-Changer \, dimen 400 300 \, offset
 100 100 \, color 0.2 0.2 0.2 \, topmost 1 \, create;
+#X text 257 46 This patch is work in progrss and demonstrates using
+GEM library. At the moment it can only open \, close and activate GEM
+window. In the future it should be used to preview images and video
+content for editing.;
 #X connect 5 0 0 0;
 #X connect 6 0 9 0;
 #X connect 7 0 0 0;

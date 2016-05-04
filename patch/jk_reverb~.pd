@@ -14,7 +14,7 @@
 #X obj 231 221 bng 15 250 50 0 \$0-reset empty Reset 20 8 0 12 -258113
 -4034 -4034;
 #X obj 234 202 hsl 128 15 0 1 0 0 empty rev_dry dry 57 8 0 10 -262130
--1 -1 1950 1;
+-1 -1 2540 1;
 #X obj 234 183 hsl 128 15 0 1 0 0 empty rev_wet wet 57 8 0 10 -204800
 -1 -1 0 1;
 #X obj 234 164 hsl 128 15 0 1 0 0 empty rev_room_size room_size 38
@@ -30,10 +30,14 @@
 #X obj 371 183 nbx 5 14 0 1 0 0 empty empty empty 0 -8 0 10 -262144
 -1 -1 0 256;
 #X obj 371 202 nbx 5 14 0 1 0 0 empty empty empty 0 -8 0 10 -262144
--1 -1 0.153543 256;
+-1 -1 0.2 256;
 #X obj 51 426 r~ \$0-bypass;
 #X obj 280 23 r \$0-reset;
 #X msg 320 58 \; rev_room_size 0 \; rev_wet 0 \; rev_dry 0.2;
+#X text 464 57 Switch off Activate toggle in order to bypass the effect
+and save CPU cycles.;
+#X text 468 96 Reset will restore the effect to its defaupt values.
+;
 #X connect 0 0 1 0;
 #X connect 0 0 5 0;
 #X connect 0 1 1 0;

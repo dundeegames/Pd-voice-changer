@@ -20,6 +20,8 @@
 -262144 -1 -4034 2700 1;
 #X obj 17 62 loadbang;
 #X msg 17 100 0.5;
+#X text 48 328 At the moment accepts inly mic input. In the future
+the menu should be added to open and save files.;
 #X connect 1 0 6 0;
 #X connect 1 1 6 0;
 #X connect 5 0 3 0;

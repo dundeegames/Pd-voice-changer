@@ -1,4 +1,4 @@
-#N canvas 413 235 919 578 12;
+#N canvas 270 273 919 578 12;
 #X obj 191 381 cos~;
 #X obj 241 353 +~ -0.25;
 #X obj 241 380 cos~;
@@ -54,6 +54,11 @@ to modulate upward or downward in frequency.;
 #X obj 129 60 r \$0-active;
 #X obj 16 140 s~ \$0-bypass;
 #X obj 162 485 r~ \$0-bypass;
+#X text 385 36 Switch off Activate toggle in order to bypass the effect
+and save CPU cycles.;
+#X text 387 80 Reset will restore the effect to its defaupt values.
+;
+#X text 388 110 based on Pd example: H09.ssb.modulation;
 #X connect 0 0 3 1;
 #X connect 1 0 2 0;
 #X connect 2 0 4 1;

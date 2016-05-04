@@ -1,4 +1,4 @@
-#N canvas 181 209 450 300 10;
+#N canvas 181 209 450 508 10;
 #X obj 101 51 cnv 15 88 78 empty cn_scnd Theme 7 10 0 12 -99865 -241291
 0;
 #X obj 108 70 bng 15 250 50 0 empty lbl1 White 20 7 0 10 -262144 -1
@@ -13,6 +13,9 @@
 () 15;
 #X msg 225 39 \; cn_main color 0 \; cn_scnd color 0 22 \; lbl1 color
 () 22;
+#X text 41 262 This Patch is work in progress. It demonstrates colour
+theming of Pd GUI. In the future this patch should be extended so it
+sends colour messages to all gui components in Pd application;
 #X connect 1 0 6 0;
 #X connect 2 0 5 0;
 #X connect 3 0 4 0;
