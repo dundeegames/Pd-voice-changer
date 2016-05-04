@@ -20,24 +20,24 @@
 #X text 85 186 adc~;
 #X text 34 42 Voice Changer is live audio processing application inspired
 by Dehumaniser Software from Krotos Ltd.;
-#X text 145 100 - at the moment the only input is the microphone.;
-#X text 146 130 - in the future the next stage would be reading \,
-editing and saving audio files.;
+#X text 146 186 - at the moment the only input is the microphone.;
 #X obj 66 262 cnv 17 3 30 empty \$0-pddp.cnv.let.0 0 5 9 0 16 -228856
 -162280 0;
 #X obj 66 300 cnv 17 3 17 empty \$0-pddp.cnv.let.1 1 5 9 0 16 -228856
 -162280 0;
-#X text 147 157 - at the moment the only input is the microphone.;
-#X text 19 110 - in the future the next stage would be reading \, editing
-and saving audio files.;
+#X text 146 217 - in the future the next stage would be reading \,
+editing and saving audio files.;
 #X text 66 353 1) --;
 #X text 156 353 - this patch accepts no arguments.;
-#X obj 86 396 pddp/pddplink jk_3d_viewport-help.pd;
-#X obj 86 428 pddp/pddplink jk_audio_input~-help.pd;
-#X obj 86 444 pddp/pddplink jk_audio_output~-help.pd;
-#X obj 86 493 pddp/pddplink jk_combfilter~-help.pd;
-#X obj 86 460 pddp/pddplink jk_pitch_shifter~-help.pd;
-#X obj 86 476 pddp/pddplink jk_ssb_modulation~-help.pd;
 #X text 85 261 dac~;
-#X obj 86 509 pddp/pddplink jk_reverb~-help.pd;
-#X obj 86 412 pddp/pddplink jk_theme-help.pd;
+#X text 146 260 - at the moment the only output is the dac.;
+#X text 146 292 - in the future the next stage would be interacting
+with DAW using MIDI and OSC.;
+#X obj 86 396 pddp/pddplink jk_3d_viewport.pd;
+#X obj 86 412 pddp/pddplink jk_theme.pd;
+#X obj 86 428 pddp/pddplink jk_audio_input~.pd;
+#X obj 86 444 pddp/pddplink jk_audio_output~.pd;
+#X obj 86 460 pddp/pddplink jk_pitch_shifter~.pd;
+#X obj 86 476 pddp/pddplink jk_ssb_modulation~.pd;
+#X obj 86 493 pddp/pddplink jk_combfilter~.pd;
+#X obj 86 509 pddp/pddplink jk_reverb~.pd;
